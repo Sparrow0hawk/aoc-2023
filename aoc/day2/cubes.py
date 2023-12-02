@@ -9,22 +9,22 @@ class CubeBag:
         self._red = red
         self._blue = blue
         self._green = green
-        self.plays: list[Game] = []
-        self._filtered_plays = None
+        self.games: list[Game] = []
+        self._filtered_games: list[Game] | None = None
 
     def add_play(self, play: str) -> None:
-        self.plays.append(Game(game_line=play))
+        self.games.append(Game(game_line=play))
 
     def filter_plays(self):
-        self._filtered_plays = [
-            play
-            for play in self.plays
-            if play.check_validity(red=self._red, blue=self._blue, green=self._green)
+        self._filtered_games = [
+            games
+            for games in self.games
+            if games.check_validity(red=self._red, blue=self._blue, green=self._green)
         ]
 
     @property
     def valid_game_ids(self) -> list[int]:
-        return [game.id for game in self._filtered_plays]
+        return [game.id for game in self._filtered_games]
 
 
 class Game:
