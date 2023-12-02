@@ -35,4 +35,3 @@ def test_calibration_part2(part2):
         container.append(calibration_line.calibration_value)
 
     assert sum(container) == 281
-    
