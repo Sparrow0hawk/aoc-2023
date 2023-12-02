@@ -1,13 +1,14 @@
 dirs = "aoc"
+bin = ".venv/bin"
 
 format:
-	ruff format $(dirs)
+	$(bin)/ruff format $(dirs)
 
 lint:
-	ruff check $(dirs)
+	$(bin)/ruff check $(dirs)
 
 fix:
-	ruff check fix $(dirs)
+	$(bin)/ruff check fix $(dirs)
 
 test:
-	pytest
+	$(bin)/pytest
