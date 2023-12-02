@@ -15,7 +15,12 @@ You will need:
     ```bash
    . .venv/bin/activate 
    ```
+3. Install package
+    ```bash
+   pip install .[dev]
+   ```
 3. Run the code for a day
     ```bash
-   python -m day1
+   python -m aoc.day1.part1
    ```
+   
