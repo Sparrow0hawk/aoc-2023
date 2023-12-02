@@ -26,6 +26,10 @@ class CubeBag:
     def valid_game_ids(self) -> list[int]:
         return [game.id for game in self._filtered_games]
 
+    @property
+    def games_power(self) -> list[int]:
+        return [game.game_power for game in self.games]
+
 
 class Game:
     def __init__(self, game_line: str):
@@ -45,6 +49,13 @@ class Game:
                 for draw in self.draws
             ]
         )
+
+    @property
+    def game_power(self) -> int:
+        red = max((draw.red for draw in self.draws))
+        blue = max((draw.blue for draw in self.draws))
+        green = max((draw.green for draw in self.draws))
+        return red * blue * green
 
 
 @dataclass
