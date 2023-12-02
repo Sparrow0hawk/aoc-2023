@@ -23,7 +23,7 @@ class CubeBag:
         ]
 
     @property
-    def valid_game_ids(self):
+    def valid_game_ids(self) -> list[int]:
         return [game.id for game in self._filtered_plays]
 
 
