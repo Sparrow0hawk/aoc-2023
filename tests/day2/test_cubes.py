@@ -13,12 +13,12 @@ Game 5: 6 red, 1 blue, 3 green; 2 blue, 1 red, 2 green"""
 
 
 def test_cubes(part1_cubes: str) -> None:
-    cube_game = CubeBag(red=12, green=13, blue=14)
+    cube_bag = CubeBag(red=12, green=13, blue=14)
 
     for line in part1_cubes.splitlines():
         print(line)
-        cube_game.add_play(play=line)
+        cube_bag.add_play(play=line)
 
-    cube_game.filter_plays()
+    cube_bag.filter_plays()
 
-    assert sum(cube_game.valid_game_ids) == 8
+    assert sum(cube_bag.valid_game_ids) == 8
