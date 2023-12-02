@@ -15,7 +15,7 @@ class CubeBag:
     def add_play(self, play: str) -> None:
         self.games.append(Game(game_line=play))
 
-    def filter_plays(self):
+    def filter_plays(self) -> None:
         self._filtered_games = [
             games
             for games in self.games
@@ -24,6 +24,7 @@ class CubeBag:
 
     @property
     def valid_game_ids(self) -> list[int]:
+        assert self._filtered_games
         return [game.id for game in self._filtered_games]
 
     @property
@@ -37,7 +38,7 @@ class Game:
         self.id = int(self._game_line.split(":")[0].split(" ")[1])
         self.draws = [CubeDraw(**draws) for draws in self._get_draws()]
 
-    def _get_draws(self) -> list[dict[str, str]]:
+    def _get_draws(self) -> list[dict[str, int]]:
         draws = self._game_line.split(":")[1].split(";")
         draws_lists = [game.replace(",", "").strip().split(" ") for game in draws]
         return [{k: int(v) for v, k in batched(draw, 2)} for draw in draws_lists]

@@ -27,6 +27,7 @@ class CalibrationLine:
                 digit = self._check_word(text, reverse=False)
                 if digit:
                     return digit
+        assert False, "unreachable"
 
     def _last(self) -> str:
         text = ""
@@ -38,6 +39,7 @@ class CalibrationLine:
                 digit = self._check_word(text, reverse=True)
                 if digit:
                     return digit
+        assert False, "unreachable"
 
     @property
     def calibration_value(self) -> int:
@@ -49,3 +51,4 @@ class CalibrationLine:
             check_key = key[::-1] if reverse else key
             if check_key in word:
                 return self._digits[key]
+        assert False, "unreachable"

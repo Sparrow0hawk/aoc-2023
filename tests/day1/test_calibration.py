@@ -19,7 +19,7 @@ def part2() -> str:
             7pqrstsixteen"""
 
 
-def test_calibration_part1(part1):
+def test_calibration_part1(part1: str) -> None:
     container = []
     for line in part1.splitlines():
         calibration_line = CalibrationLine(line=line, named_digit=False)
@@ -28,7 +28,7 @@ def test_calibration_part1(part1):
     assert sum(container) == 142
 
 
-def test_calibration_part2(part2):
+def test_calibration_part2(part2: str) -> None:
     container = []
     for line in part2.splitlines():
         calibration_line = CalibrationLine(line=line, named_digit=True)
