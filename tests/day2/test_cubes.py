@@ -23,6 +23,7 @@ def test_cubes(part1_cubes: str) -> None:
 
     assert sum(cube_bag.valid_game_ids) == 8
 
+
 def test_cubes_power(part1_cubes: str) -> None:
     cube_bag = CubeBag(red=12, green=13, blue=14)
 
@@ -31,4 +32,3 @@ def test_cubes_power(part1_cubes: str) -> None:
         cube_bag.add_play(play=line)
 
     assert sum(cube_bag.games_power) == 2286
-
