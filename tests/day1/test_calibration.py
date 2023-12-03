@@ -1,12 +1,14 @@
 from aoc.day1.calibration import CalibrationLine
 import pytest
 
+
 @pytest.fixture
 def part1() -> str:
     return """1abc2
             pqr3stu8vwx
             a1b2c3d4e5f
             treb7uchet"""
+
 
 @pytest.fixture
 def part2() -> str:
