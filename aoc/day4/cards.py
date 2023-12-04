@@ -22,13 +22,13 @@ class Card:
 
     @property
     def points(self) -> int:
-        points = 2 ** (self.number_of_winners - 1) if self.number_of_winners else 0
+        points = 2 ** (self.number_of_matches - 1) if self.number_of_matches else 0
         return int(points)
 
     @property
-    def number_of_winners(self) -> int:
+    def number_of_matches(self) -> int:
         number_of_matches = len(self._winning_numbers.intersection(self._drawn_numbers))
         return number_of_matches
 
     def __repr__(self) -> str:
-        return f"Card(number={self._number}, number_of_winners={self.number_of_winners}, _winning_numbers={self._winning_numbers}, _drawn_numbers={self._drawn_numbers})"
+        return f"Card(number={self._number}, number_of_matches={self.number_of_matches}, _winning_numbers={self._winning_numbers}, _drawn_numbers={self._drawn_numbers})"
