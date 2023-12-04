@@ -17,7 +17,7 @@ class CalibrationLine:
         }
         self._named_digit = named_digit
 
-    def _first(self) -> str:
+    def _first(self) -> str | None:
         text = ""
         for letter in self._line:
             if letter.isdigit():
@@ -27,8 +27,9 @@ class CalibrationLine:
                 digit = self._check_word(text, reverse=False)
                 if digit:
                     return digit
+        return None
 
-    def _last(self) -> str:
+    def _last(self) -> str | None:
         text = ""
         for letter in self._line[::-1]:
             if letter.isdigit():
@@ -38,14 +39,20 @@ class CalibrationLine:
                 digit = self._check_word(text, reverse=True)
                 if digit:
                     return digit
+        return None
 
     @property
     def calibration_value(self) -> int:
-        pair = int("".join([self._first(), self._last()]))
+        first = self._first()
+        assert first is not None
+        last = self._last()
+        assert last is not None
+        pair = int("".join([first, last]))
         return pair
 
-    def _check_word(self, word: str, reverse: bool = False) -> str:
+    def _check_word(self, word: str, reverse: bool = False) -> str | None:
         for key in self._digits:
             check_key = key[::-1] if reverse else key
             if check_key in word:
                 return self._digits[key]
+        return None

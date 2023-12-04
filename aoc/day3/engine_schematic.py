@@ -1,9 +1,10 @@
+from __future__ import annotations
 import re
 from dataclasses import dataclass
 
 
 class EngineSchematic:
-    def __init__(self):
+    def __init__(self) -> None:
         self._lines: list[Line] = []
         self._part_numbers: list[int] = []
         self._SYMBOLS: set[str] = {"*", "-", "%", "=", "+", "@", "$", "#", "&", "/"}
@@ -11,11 +12,13 @@ class EngineSchematic:
     def add_line(self, line: str) -> None:
         self._lines.append(Line(line=line))
 
-    def _find_on_line(self, line_no: int, index: int) -> str:
+    def _find_on_line(self, line_no: int, index: int) -> str | None:
         if line_no <= (len(self._lines) - 1) and 0 <= index <= (
             len(self._lines[0].line) - 1
         ):
             return self._lines[line_no].line[index]
+        else:
+            return None
 
     def symbol_search(self) -> list[int]:
         part_numbers = []
@@ -32,7 +35,7 @@ class EngineSchematic:
         return part_numbers
 
     @property
-    def part_numbers(self):
+    def part_numbers(self) -> list[list[PartNumber]]:
         return [line._part_numbers for line in self._lines]
 
 

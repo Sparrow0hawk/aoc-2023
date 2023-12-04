@@ -1,6 +1,6 @@
 import pytest
 
-from aoc.day3.engine_schematic import Line, EngineSchematic
+from aoc.day3.engine_schematic import EngineSchematic
 
 
 @pytest.fixture
