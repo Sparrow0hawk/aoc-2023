@@ -7,7 +7,7 @@ format:
 lint: ruff-check mypy
 
 fix:
-	$(bin)/ruff check fix $(dirs)
+	$(bin)/ruff check --fix $(dirs)
 
 test:
 	$(bin)/pytest
