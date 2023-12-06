@@ -30,5 +30,22 @@ class Card:
         number_of_matches = len(self._winning_numbers.intersection(self._drawn_numbers))
         return number_of_matches
 
+    @property
+    def number(self) -> int:
+        return self._number
+
     def __repr__(self) -> str:
         return f"Card(number={self._number}, number_of_matches={self.number_of_matches}, _winning_numbers={self._winning_numbers}, _drawn_numbers={self._drawn_numbers})"
+
+
+class CardRepository:
+    def __init__(self, cards: list[Card]):
+        self._cards: list[Card] = cards
+
+    @property
+    def total_won_cards(self) -> int:
+        counter = {k.number: 1 for k in self._cards}
+        for card in self._cards:
+            for j in range(1, card.number_of_matches + 1):
+                counter[card.number + j] += counter[card.number]
+        return sum(counter.values())

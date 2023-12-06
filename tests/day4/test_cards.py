@@ -1,6 +1,6 @@
 import pytest
 
-from aoc.day4.cards import Card
+from aoc.day4.cards import Card, CardRepository
 
 
 @pytest.fixture
@@ -17,3 +17,11 @@ def test_card(part1: str) -> None:
     cards = [Card(line=line) for line in part1.splitlines(keepends=True)]
 
     assert sum([card.points for card in cards]) == 13
+
+
+def test_cards_win_more_cards(part1: str) -> None:
+    cards = [Card(line=line) for line in part1.splitlines(keepends=True)]
+
+    card_repo = CardRepository(cards=cards)
+
+    assert card_repo.total_won_cards == 30
